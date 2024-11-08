@@ -1,17 +1,15 @@
 /// <reference types= "cypress"/>
 
 
-describe('apex test', () => {
+describe('apex test', {testIsolation: false}, () => {
 
-        let user
+        // let user
 
-        before(() => {
-            cy.visit('')
-        })
-
+        // before(() => {
+        //     cy.login()
+        // })
 
         it ('', () => {
-            cy.get('')
-                .type(``)
+            cy.login()
         })
 })
