@@ -3,6 +3,7 @@ require("dotenv").config();
 
 module.exports = defineConfig({
     e2e: {
+      chromeWebSecurity: false,
       defaultCommandTimeout: 15000,
        env: {
          username_test: process.env.USERNAME_TEST,
@@ -10,7 +11,6 @@ module.exports = defineConfig({
          base_url: process.env.BASE_URL,
        },
     setupNodeEvents(on, config) {
-      // implement node event listeners here
     },
   },
 });
