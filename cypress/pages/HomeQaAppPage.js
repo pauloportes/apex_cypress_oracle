@@ -19,9 +19,8 @@ class HomeQaAppPage {
     };
 
     quantityCell = () => {
-        return 'tbody > .a-GV-row > .u-tE';
+        return 'td[role="gridcell"].a-GV-cell.u-tE';
     };
-
 
     //actions QA application
 
@@ -32,10 +31,11 @@ class HomeQaAppPage {
      }
 
      changeOrderQuantity() {
-        cy.get(this.orderColumn()).click().type('10').type('{enter}')
-        cy.get(this.quantityCell()).click().type('{del}'.repeat(17)).type('20')
+        cy.get(this.orderColumn()).click()
+        cy.get('[data-return-value="10"]', { timeout: 3000 }).click()
+        cy.get('.a-IG-controls-item > :nth-child(2)').should('be.visible', { timeout: 3000 })
+        cy.get(this.quantityCell()).dblclick().type('{backspace}').type('20')
         cy.get(this.buttonSave()).click({ force: true });
     }
-
 } 
 export default HomeQaAppPage; 
