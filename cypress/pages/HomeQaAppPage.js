@@ -22,6 +22,19 @@ class HomeQaAppPage {
         return 'td[role="gridcell"].a-GV-cell.u-tE';
     };
 
+    customerCell = () => {
+        return 'tbody > .a-GV-row > :nth-child(6)';
+    };
+
+    customerButton = () => {
+        return '#C86393156845784584040_lov_btn';
+    };
+
+    locationList = () => {
+        return 'li[data-id="1"]';
+    };
+
+
     //actions QA application
 
     setStoreAProductQuantity() {    
@@ -29,12 +42,20 @@ class HomeQaAppPage {
         cy.get(this.bananaStoreA()).click().type('{del}'.repeat(17)).type('50')    
         cy.get(this.buttonSave()).click({ force: true });  
      }
-
-     changeOrderQuantity() {
+    changeOrderQuantity() {
         cy.get(this.orderColumn()).click()
         cy.get('[data-return-value="10"]', { timeout: 3000 }).click()
         cy.get('.a-IG-controls-item > :nth-child(2)').should('be.visible', { timeout: 3000 })
         cy.get(this.quantityCell()).dblclick().type('{backspace}').type('20')
+        cy.get(this.buttonSave()).click({ force: true });
+    }
+    changeOrderLocation() {
+        cy.get(this.orderColumn()).click()
+        cy.get('[data-return-value="10"]', { timeout: 3000 }).click()
+        cy.get('.a-IG-controls-item > :nth-child(2)').should('be.visible', { timeout: 3000 })
+        cy.get(this.customerCell()).dblclick()
+        cy.get(this.customerButton()).click()
+        cy.get('li[data-id="1"]').click()
         cy.get(this.buttonSave()).click({ force: true });
     }
 } 
