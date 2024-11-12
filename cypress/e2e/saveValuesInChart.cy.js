@@ -5,10 +5,10 @@ const homeQaAppPage = new HomeQaAppPage()
 describe('Save values in chart in memory', {testIsolation: false}, () => {
 
         before(() => {
-             cy.login()
+             cy.createSession()
         })
 
-        it ('Change and save products values in "Store A" and check if it was saved', () => {
+        it ('Change and save products values of "Store A" products in the chart and check if it was saved', () => {
             homeQaAppPage.setStoreAProductQuantity()
         })
 })

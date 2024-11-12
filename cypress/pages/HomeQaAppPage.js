@@ -1,6 +1,6 @@
 class HomeQaAppPage {
     
-    //elements
+    //elements QA application
 
     appleStoreA = () => {
         return ".a-GV-row.is-selected > .u-tE";
@@ -9,20 +9,16 @@ class HomeQaAppPage {
     bananaStoreA = () => {
         return '[data-id="2"] > .u-tE';
     };
-    grapesStoreA = () => {
-        return '[data-id="5"] > .u-tE';
-    };
 
     buttonSave = () => {
-        return '#B84761757277122758341';
+        return '#B86393157361126584045';
     };
 
-    //actions Globalpay
+    //actions QA application
 
-    setStoreAProductQuantity() {
+    setStoreAProductQuantity() {    
         cy.get(this.appleStoreA()).dblclick().type('{backspace}').type('40')
         cy.get(this.bananaStoreA()).click().type('{del}'.repeat(17)).type('50')    
-        cy.get(this.grapesStoreA()).click().type('{del}'.repeat(17)).type('60').wait(2000)    
         cy.get(this.buttonSave()).click({ force: true });  
      }
 } 

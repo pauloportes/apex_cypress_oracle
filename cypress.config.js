@@ -8,7 +8,8 @@ module.exports = defineConfig({
        env: {
          username_test: process.env.USERNAME_TEST,
          password: process.env.PASSWORD,
-         base_url: process.env.BASE_URL,
+         login_url: process.env.LOGIN_URL,
+         home_url: process.env.HOME_URL,
        },
     setupNodeEvents(on, config) {
     },
