@@ -41,7 +41,13 @@ class HomeQaAppPage {
         cy.get(this.appleStoreA()).dblclick().type('{backspace}').type('40')
         cy.get(this.bananaStoreA()).click().type('{del}'.repeat(17)).type('50')    
         cy.get(this.buttonSave()).click({ force: true });  
-     }
+    }
+
+    assertStoreAProductQuantity() {    
+        cy.get(this.appleStoreA()).should('contain', '40')
+        cy.get(this.bananaStoreA()).should('contain', '50')
+    }
+
     changeOrderQuantity() {
         cy.get(this.orderColumn()).click()
         cy.get('[data-return-value="10"]', { timeout: 3000 }).click()
@@ -49,6 +55,11 @@ class HomeQaAppPage {
         cy.get(this.quantityCell()).dblclick().type('{backspace}').type('20')
         cy.get(this.buttonSave()).click({ force: true });
     }
+
+    assertOrderQuantity() {    
+        cy.get(this.quantityCell()).should('contain', '20')
+    }
+
     changeOrderLocation() {
         cy.get(this.orderColumn()).click()
         cy.get('[data-return-value="10"]', { timeout: 3000 }).click()
@@ -57,6 +68,10 @@ class HomeQaAppPage {
         cy.get(this.customerButton()).click()
         cy.get('li[data-id="1"]').click()
         cy.get(this.buttonSave()).click({ force: true });
+    }
+    
+    assertOrderLocation() {    
+        cy.get(this.customerCell()).should('contain', 'Deli')
     }
 } 
 export default HomeQaAppPage; 

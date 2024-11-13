@@ -17,3 +17,19 @@ Cypress.Commands.add('createSession', () => {
     cy.visit(home_url)
     }
 )});
+
+Cypress.Commands.add('validateHomeSession', () => { 
+    cy.request({
+        method: 'GET',
+        url: 'https://apex.oracle.com/pls/apex/wwv_flow.ajax?p_context=qa-application/home/*',
+        failOnStatusCode: false
+      }).then((response) => {
+        expect(response.status).to.eq(200);
+})});
+
+Cypress.Commands.add('chartIframe', () => {
+    cy.iframe('[path="M1221,270H1231V280H1221Z"]')
+      .as('iframe')
+      .find('[aria-label="Series: Deli; Group: Grapes; Value: 50. Unselected"]')
+      console.log('Chart iframe found')
+  })
