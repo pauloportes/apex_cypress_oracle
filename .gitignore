@@ -128,3 +128,12 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+# Ignore the Allure results folder
+allure-results/
+
+# Ignore the generated Allure report folder
+allure-report/
+
+# Ignore any other temporary or cache files from Allure
+.allure/
