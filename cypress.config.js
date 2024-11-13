@@ -1,7 +1,8 @@
-const { defineConfig } = require("cypress");
-require("dotenv").config();
+import { defineConfig } from "cypress"
+import "dotenv/config"
+import { allureCypress } from "allure-cypress/reporter";
 
-module.exports = defineConfig({
+export default defineConfig({
     e2e: {
       chromeWebSecurity: false,
       defaultCommandTimeout: 15000,
@@ -12,6 +13,10 @@ module.exports = defineConfig({
          home_url: process.env.HOME_URL,
        },
     setupNodeEvents(on, config) {
+      allureCypress(on, config, {
+        resultsDir: "allure-results",
+      });
+      return config;
     },
   },
 });
