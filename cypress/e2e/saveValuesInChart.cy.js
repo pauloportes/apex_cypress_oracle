@@ -9,6 +9,8 @@ describe('Save values in chart in memory', {testIsolation: false}, () => {
         })
 
         it ('Change and save products values of "Store A" products in the chart and check if it was saved', () => {
-            homeQaAppPage.setStoreAProductQuantity()
+            homeQaAppPage.setStoreAProductQuantity({ timeout: 5000 })
+            cy.validateHomeSession({ timeout: 5000 })
+            homeQaAppPage.assertStoreAProductQuantity({ timeout: 5000 })
         })
 })

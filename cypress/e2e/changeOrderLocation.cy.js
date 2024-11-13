@@ -10,5 +10,7 @@ describe('Change the location of Order 10', {testIsolation: false}, () => {
 
         it ('Change and save the location of Order 10', () => {
             homeQaAppPage.changeOrderLocation()
+            cy.validateHomeSession({ timeout: 5000 }) //This endpoint provide information for both (table and chart)
+            homeQaAppPage.assertOrderLocation({ timeout: 5000 })
         })
 })
